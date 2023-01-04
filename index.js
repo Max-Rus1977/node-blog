@@ -1,11 +1,11 @@
 import express from "express";
+import fs from "fs";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 
 const app = express()
+
 mongoose.set('strictQuery', true);
-
-
 mongoose
   .connect('mongodb+srv://admin:ww123@cluster0.ufaxtpl.mongodb.net/?retryWrites=true&w=majority')
   .then(() => console.log('DB i win ok!!!'))
@@ -14,15 +14,11 @@ mongoose
 app.use(express.json())
 
 app.get('/', (req, res) => {
-  res.send('Hello Node!!')
+  res.send('<h1 style="text-align: center">Hello Node!!</h1>')
 })
 
 app.post('/auth/login', (req, res) => {
   console.log(req.body)
-
-  if (req.body.email === 'test2@test2.ru') {
-
-  }
 
   const token = jwt.sign(
     {
